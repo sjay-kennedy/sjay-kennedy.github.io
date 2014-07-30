@@ -10,43 +10,58 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 
   
   
 </head>
-<body ng-app="">  
-<div ng-controller="Controller">
-    <header class="row">
-      <div class="well col-md-8 col-md-offset-2 header">
-        <div class="col-md-4"><img src="img/mad-lib-happy-face.png" /></div>
-        <div class="col-md-8 logo" >
+<body ng-app="myApp">  
+<div ng-controller="madController">
+  <header class="row">
+    <div class="well col-md-8 col-md-offset-2 header">
+      <div class="col-md-4"><img src="img/mad-lib-happy-face.png" /></div>
+      <div class="col-md-8 logo" >
 
-            <img src="img/ng-mad-libs-logo.png" class="pull-left" />
-            <h1>Automate This!</h1>
+          <img src="img/ng-mad-libs-logo.png" class="pull-left" />
+          <h1>Automate This!</h1>
 
-        </div>
       </div>
-    </header>
+    </div>
+  </header>
     <section class="row">
       <div class="well col-md-8 col-md-offset-2 blanks"  ng-class="{'rounded' : published==false}" >
         <h3>Provide the following words:</h3>
+        <div class="gender">
+          <form name="genderRadio">
+            Make this story about a: &nbsp;&nbsp;&nbsp;
+            <label class="radio-inline">
+              <input type="radio" name="radio1" id="radio1" value="male"  ng-model="gender"> bloke
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="radio2" id="radio2" value="female"  ng-model="gender"> lady
+            </label>
+          </form>
+        </div>
+
+      
         <form novalidate class="simple-form" name="form">
           <div class="col-md-4">
-            <input type="text" ng-model="copied.names" name="name" required />
-           <!--  <p ng-if="{{copied.names}} == {{master.names}}">Please fill in a new word.</p>{{copied.names}}{{master.names}} -->
+            <input type="text" ng-model="copied.name" name="female name" required />
             <input type="text"  ng-model="copied.job"  name="job" required />
             <input type="text"  ng-model="copied.tedious"  name="tedious" required />
+            <input type="text" ng-model="copied.dirty"  name="dirty" required />
            
           </div>
           <div class="col-md-4">
-            <input type="text" ng-model="copied.dirty"  name="dirty" required />
+            
             <input type="text"  ng-model="copied.celebrity"  name="celebrity" required />
             <input type="text"  ng-model="copied.useless"  name="useless" required />
             <input type="text"  ng-model="copied.useful"  name="useful" required />
+            <input type="text" ng-model="copied.obnox"  name="obnox" required />
            
           </div>
           <div class="col-md-4">
-            <input type="text" ng-model="copied.obnox"  name="obnox" required />
+            
             <input type="text"  ng-model="copied.huge" name="huge" required />
             <input type="text"  ng-model="copied.adjective" name="adjective" required />
            
@@ -57,11 +72,11 @@
     </section>
     <section class="row">
       <div class="well col-md-8 col-md-offset-2 story" ng-if="published">
-          <p>
-        <span class="words">{{copied.names}}</span> was a <span class="words">{{copied.job}}</span>  who loved technology. Although she loved parts of her job, she absolutely hated <span class="words">{{copied.tedious}}</span>  and <span class="words">{{copied.dirty}}</span> . So, <span class="words">{{copied.name}}</span>  met with her life mentor <span class="words">{{copied.celebrity}}</span>  who told her to learn how to <span class="words">{{copied.useful}}</span>  with Thinkful. Thinkful didn't offer a course on <span class="words">{{copied.useless}}</span>  so she studied programming instead. 
-         </p>
-         <p>
-        What a great decision! With her new skills, <span class="words">{{copied.name}}</span>  built a(n) <span class="words">{{copied.adjective}}</span>  robot named <span class="words">{{copied.obnox}}</span>  that not only loved <span class="words">{{copied.dirty}}</span>  but did it <span class="words">{{copied.huge}}</span> faster. 
+        <p>
+       <span class="words" >{{copied.name}}</span> was a <span class="words">{{copied.job}}</span>  who loved technology. Although {{she}} loved parts of {{her}} job, {{she}} absolutely hated <span class="words">{{copied.tedious}}</span>  and <span class="words">{{copied.dirty}}</span> . So, <span class="words">{{copied.name}}</span>  met with {{her}} life mentor <span class="words">{{copied.celebrity}}</span>  who told {{her_b}} to learn how to <span class="words">{{copied.useful}}</span>  with Thinkful. Thinkful didn't offer a course on <span class="words">{{copied.useless}}</span>  so {{she}} studied programming instead. 
+        </p>
+        <p>
+        What a great decision! With {{her}} new skills, <span class="words">{{copied.name}}</span>  built a(n) <span class="words">{{copied.adjective}}</span>  robot named <span class="words">{{copied.obnox}}</span>  that not only loved <span class="words">{{copied.dirty}}</span>  but did it <span class="words">{{copied.huge}}</span> times faster. 
         </p>
       </div>
     </section>
@@ -73,72 +88,10 @@
      </div>
     </section>
 
-
-
-    <!-- {{form.job.$pristine}}
-    <pre>copied = {{copied | json}}</pre>
-    <pre>master = {{master | json}}</pre> -->
 </div>
 
 
-<script>
-  function Controller($scope) {
 
-     $scope.published= false;
-     $scope.master= {
-
-      names:"female name", 
-      job:"job title", 
-      tedious:"tedious task",
-      dirty:"dirty task",
-      celebrity:"celebrity",
-      useful:"useful skill",
-      useless:"useless skill",
-      obnox:"obnoxious celebrity",
-      huge:"huge number",
-      adjective:"adjective"
-
-
-      };
-
-
-      
-
-
-     $scope.copied = angular.copy($scope.master);
-     if ($scope.copied.names !== $scope.master.names &&
-          $scope.copied.job !== $scope.master.job
-
-
-
-
-        ) {
-
-            $scope.submit = true;
-      };
-     
-     // $scope.update = function(copied) {
-       
-     //   $scope.master= angular.copy(copied);
-     //    $scope.form.$setPristine();
-     // };
-
-     $scope.publish = function() {
-       // Example with 1 argument
-       $scope.published= true;
-       
-     };
-
-     $scope.reset = function() {
-       // Example with 2 arguments
-       angular.copy($scope.master, $scope.copied);
-       $scope.form.$setPristine();
-       $scope.published= false;
-     };
-
-     //$scope.reset();
-   }
-</script>
 </body>
 </html>
 

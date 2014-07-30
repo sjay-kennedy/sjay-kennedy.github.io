@@ -88,7 +88,12 @@
 
 }
 
-input {
+.gender {
+
+	margin:10px 0 20px 0;
+}
+
+.simple-form input {
 
 	margin-bottom:15px;
 	padding:20px;
