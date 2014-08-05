@@ -16,23 +16,25 @@
   
 </head>
 <body ng-app="myApp">  
-<div ng-controller="madController">
-  <header class="row">
-    <div class="well col-md-8 col-md-offset-2 header">
-      <div class="col-md-4"><img src="img/mad-lib-happy-face.png" /></div>
-      <div class="col-md-8 logo" >
+  <div ng-controller="madController">
+    <header class="row">
+      <div class="well col-md-8 col-md-offset-2 header">
+        <div class="col-md-4"><img src="img/mad-lib-happy-face.png" /></div>
+        <div class="col-md-8 logo" >
 
-          <img src="img/ng-mad-libs-logo.png" class="pull-left" />
-          <h1>Automate This!</h1>
+            <img src="img/ng-mad-libs-logo.png" class="pull-left" />
+            <h1>Automate This!</h1>
 
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
     <section class="row">
-      <div class="well col-md-8 col-md-offset-2 blanks"  ng-class="{'rounded' : published==false}" >
-        <h3>Provide the following words:</h3>
-        <div class="gender">
-          <form name="genderRadio">
+      <div class="well col-md-8 col-md-offset-2 blanks"  ng-class="{'rounded' : published==false}" ng-hide="published">
+        
+        <form novalidate  name="form" ng-submit='submitted=true; publish();' >
+          <h3>Provide the following words:</h3>
+          <div class="gender">
+            
             Make this story about a: &nbsp;&nbsp;&nbsp;
             <label class="radio-inline">
               <input type="radio" name="radio1" id="radio1" value="male"  ng-model="gender"> bloke
@@ -40,57 +42,55 @@
             <label class="radio-inline">
               <input type="radio" name="radio2" id="radio2" value="female"  ng-model="gender"> lady
             </label>
-          </form>
-        </div>
-
-      
-        <form novalidate class="simple-form" name="form">
-          <div class="col-md-4">
-            <input type="text" ng-model="copied.name" name="female name" required />
-            <input type="text"  ng-model="copied.job"  name="job" required />
-            <input type="text"  ng-model="copied.tedious"  name="tedious" required />
-            <input type="text" ng-model="copied.dirty"  name="dirty" required />
-           
-          </div>
-          <div class="col-md-4">
             
-            <input type="text"  ng-model="copied.celebrity"  name="celebrity" required />
-            <input type="text"  ng-model="copied.useless"  name="useless" required />
-            <input type="text"  ng-model="copied.useful"  name="useful" required />
-            <input type="text" ng-model="copied.obnox"  name="obnox" required />
-           
           </div>
-          <div class="col-md-4">
+          <div class="simple-form">
+            <div class="col-md-4">
+              <input type="text" ng-model="words.name" name="female name" placeholder="name" required />
+              <input type="text"  ng-model="words.job"  name="job" placeholder="job" required />
+              <input type="text"  ng-model="words.tedious"  name="tedious" placeholder="tedious task"  required />
+              <input type="text" ng-model="words.dirty"  name="dirty" placeholder="dirty task" required />
+             
+            </div>
+            <div class="col-md-4">
+              
+              <input type="text"  ng-model="words.celebrity"  name="celebrity" placeholder="celebrity" required />
+              <input type="text"  ng-model="words.useless"  name="useless" placeholder="useless skill"  required />
+              <input type="text"  ng-model="words.useful"  name="useful" placeholder="useful skill" required />
+              <input type="text" ng-model="words.obnox"  name="obnox" placeholder="obnoxious celebrity"  required />
+             
+            </div>
+            <div class="col-md-4">
+              
+              <input type="text"  ng-model="words.huge" name="huge" placeholder="huge number" required />
+              <input type="text"  ng-model="words.adjective" name="adjective" placeholder="adjective" required />
+             
+            </div>
             
-            <input type="text"  ng-model="copied.huge" name="huge" required />
-            <input type="text"  ng-model="copied.adjective" name="adjective" required />
-           
+            <div class="col-md-12 offset-top-20">
+              <button type="submit" class="btn btn-lg btn-danger "  ng-disabled="form.$invalid" >Publish</button>
+            </div>
           </div>
-          
         </form>
       </div>
     </section>
     <section class="row">
       <div class="well col-md-8 col-md-offset-2 story" ng-if="published">
         <p>
-       <span class="words" >{{copied.name}}</span> was a <span class="words">{{copied.job}}</span>  who loved technology. Although {{she}} loved parts of {{her}} job, {{she}} absolutely hated <span class="words">{{copied.tedious}}</span>  and <span class="words">{{copied.dirty}}</span> . So, <span class="words">{{copied.name}}</span>  met with {{her}} life mentor <span class="words">{{copied.celebrity}}</span>  who told {{her_b}} to learn how to <span class="words">{{copied.useful}}</span>  with Thinkful. Thinkful didn't offer a course on <span class="words">{{copied.useless}}</span>  so {{she}} studied programming instead. 
-        </p>
+           <span class="words" >{{words.name}}</span> was a <span class="words">{{words.job}}</span>  who loved technology. Although {{she}} loved parts of {{her}} job, {{she}} absolutely hated <span class="words">{{words.tedious}}</span>  and <span class="words">{{words.dirty}}</span> . So, <span class="words">{{words.name}}</span>  met with {{her}} life mentor <span class="words">{{words.celebrity}}</span>  who told {{her_b}} to learn how to <span class="words">{{words.useful}}</span>  with Thinkful. Thinkful didn't offer a course on <span class="words">{{words.useless}}</span>  so {{she}} studied programming instead. 
+            </p>
         <p>
-        What a great decision! With {{her}} new skills, <span class="words">{{copied.name}}</span>  built a(n) <span class="words">{{copied.adjective}}</span>  robot named <span class="words">{{copied.obnox}}</span>  that not only loved <span class="words">{{copied.dirty}}</span>  but did it <span class="words">{{copied.huge}}</span> times faster. 
+          What a great decision! With {{her}} new skills, <span class="words">{{words.name}}</span>  built a(n) <span class="words">{{words.adjective}}</span>  robot named <span class="words">{{words.obnox}}</span>  that not only loved <span class="words">{{words.dirty}}</span>  but did it <span class="words">{{words.huge}}</span> times faster. 
         </p>
+         <div class="col-md-12 offset-top-20">
+          <button class="btn btn-lg btn-danger center-block " ng-click="reset()" ng-if="published" >Reset</button>
+        </div>
       </div>
+
     </section>
-    <section class="row">
-      <div class="well col-md-8 col-md-offset-2 controls">
-        <button class="btn btn-lg btn-danger" ng-click="reset()" ng-if="published" >Reset</button>
-        <!-- <button class="btn btn-lg btn-danger"  ng-click="update(copied)" ng-disabled="form.$pristine || isUnchanged(user)">Publish</button> -->
-        <button class="btn btn-lg btn-danger"  ng-click="publish()" ng-disabled="form.$pristine || isUnchanged(user)" ng-if="!published">Publish</button>
-     </div>
-    </section>
+  
 
-</div>
-
-
+  </div>
 
 </body>
 </html>

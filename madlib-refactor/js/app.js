@@ -17,9 +17,9 @@ angular.module('myApp', [])
 		}
   	});
 	
-	
+	//TO DO make an array of objects with attributes values
 	$scope.published= false;
-     $scope.master= {
+     /*$scope.master= {
 
       name:"name", 
       job:"job title", 
@@ -33,21 +33,30 @@ angular.module('myApp', [])
       adjective:"adjective"
 
 
-    };
-
-    $scope.copied = angular.copy($scope.master);
+    };*/
+    // choose more semantic object names rather than "copied"
+    /*$scope.copied = angular.copy($scope.master);
     if ($scope.copied.names !== $scope.master.names && $scope.copied.job !== $scope.master.job) {
 
         $scope.submit = true;
-    };
+    };*/
     $scope.publish = function() {
-       // Example with 1 argument
-       $scope.published= true;
+       if($scope.form.$valid) {
+        console.log('The form is valid');
+         $scope.published= true;
+      } else {
+        console.log('The form is invalid');
+        $scope.published= false;
+      }
+
+      console.log('Form Submitted: ', $scope.data);
+      
        
     };
     $scope.reset = function() {
        // Example with 2 arguments
-       angular.copy($scope.master, $scope.copied);
+       /*angular.copy($scope.master, $scope.copied);*/
+       $scope.words ={};
        $scope.form.$setPristine();
        $scope.published= false;
     };
