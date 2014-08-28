@@ -1,4 +1,5 @@
-angular.module('myApp', [])
+angular.module('myApp', ['ngAnimate'])
+
 
 .controller('madController', function ($scope) {
 	//$scope.gender = "female";
