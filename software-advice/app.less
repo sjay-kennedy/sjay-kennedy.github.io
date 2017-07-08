@@ -1,0 +1,121 @@
+/* app css stylesheet */
+html {
+	position:relative;
+    min-height: 100%;  
+}
+body {
+    margin:0; 
+}
+.main-content {
+	position:relative;
+	padding:0;
+	margin:0;
+	min-height:100%;
+	height:100%;
+}
+.vertical-center {
+	padding-top:20%;
+}
+.navbar {
+    position: relative;
+    min-height: 60px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+.navbar-default {
+    background-color: #333;
+    border:none;
+    border-radius: 0 0 0 0;
+	-moz-border-radius: 0 0 0 0;
+	-webkit-border-radius: 0 0 0 0;
+}
+.navbar-brand { 
+    height: 60px;
+    padding: 17px 17px;
+}
+.btn {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.btn-primary {
+    background-color: #ff851f;
+    border-color: #e56800;
+    color: #fff;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+	background-color: #eb6b00;
+	border-color: #e56800;
+	outline:none;
+} 
+.btn-primary.disabled:hover, .btn-primary.disabled:active, .btn-primary.disabled:focus {
+	background-color: #eb6b00;
+	border-color: #e56800;
+	outline:none;
+} 
+.btn-container {
+	text-align:center;	
+} 
+.ab-modal {
+	
+	.right-column {
+		text-align:center;
+	}
+	input {
+		margin-bottom:20px;
+	}
+	.btn-lg {
+		margin-top:13px;
+	}
+	.modal-header {
+	    padding: 10px 15px 0 15px;
+	    border-bottom: none;
+	}
+	.modal-body {
+	    padding: 15px 15px 20px 15px;
+	}
+	.required-field::before {
+		display:block;
+		content:'*';
+		left:0;
+		position:absolute;
+		font-size:18px;
+		font-weight:bold;
+		color:#ff851f;
+	}
+	.form-alert {
+		padding:0;
+		margin:0;
+		color:#e56800;
+		font-size:12px;
+	}
+}
+.footer {
+ 	position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #333;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(255, 255, 255) !important;
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+@media (min-width: 768px) {
+	.modal-dialog {
+	    width: 800px;
+	    margin: 80px auto;
+	}
+	
+}
+@media (min-width: 992px) { 
+	.ab-modal {
+		.right-input {
+			float:right;
+		}
+	}
+}
+
