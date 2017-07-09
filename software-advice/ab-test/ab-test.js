@@ -66,7 +66,7 @@ angular.module('myApp.abtest', ['ngRoute'])
 		$scope.form.getQuote.$setUntouched();
 		$scope.form.getQuote.$submitted = false;
 		delete $scope.user;
-		$('input:-webkit-autofill').css('background-color', '#fff');   
+		  
 	};
 
 //});
