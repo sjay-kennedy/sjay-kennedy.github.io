@@ -63,7 +63,7 @@ body {
 	input {
 		margin-bottom:20px;
 	}
-	.btn-lg {
+	.btn-submit {
 		margin-top:13px;
 	}
 	.modal-header {
@@ -73,9 +73,13 @@ body {
 	.modal-body {
 	    padding: 15px 15px 20px 15px;
 	}
+	.required-field {
+		position:relative;
+	}
 	.required-field::before {
 		display:block;
 		content:'*';
+		top:-18px;
 		left:0;
 		position:absolute;
 		font-size:18px;
@@ -83,6 +87,9 @@ body {
 		color:#ff851f;
 	}
 	.form-alert {
+		position:absolute;
+		top:-16px;
+		left:10px;
 		padding:0;
 		margin:0;
 		color:#e56800;
@@ -112,15 +119,49 @@ input:-webkit-autofill {
 	    width: 800px;
 	    margin: 80px auto;
 	}
-	
+	.ab-modal {
+		.img-responsive {
+			display:block;
+			position: fixed;
+			top:43px;
+			right:25px;
+			width:42%;
+		}
+		input {
+			width:50%;
+		}
+		.right-input input {
+			margin-left:20px;
+		}
+		.btn-submit {
+			position:fixed;
+			top:290px;
+			right:155px;
+		}
+	}
 }
 @media (min-width: 992px) { 
-	.img-responsive {
-		display:block;
-	}
+
 	.ab-modal {
-		.right-input {
+		.right-input input {
+			margin-left:6px;
+		}
+		.right-input x{
 			float:right;
+		}
+		input {
+			width:100%;
+		}
+		.img-responsive {
+			position:relative;
+			top:initial;
+			right:initial;
+			width:100%;
+		}
+		.btn-submit {
+			position:relative;
+			top:initial;
+			right:initial;
 		}
 	}
 }
