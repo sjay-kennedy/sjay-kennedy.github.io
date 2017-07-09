@@ -13,7 +13,7 @@
                 <label class="sr-only" for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Name" ng-model="user.name" >
               </div>
-              <div class="form-group required-field ">
+              <div class="form-group required-field" >
                 <label class="sr-only" for="email">Email</label>
                 <span class="form-alert" ng-if="!form.getQuote.$valid">Email is required</span>
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email" ng-keydown="change($event)" required >
